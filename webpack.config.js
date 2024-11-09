@@ -1,21 +1,19 @@
-const path = require('path');
-
 module.exports = {
     entry: {
         bundle: "./src/index.ts"
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: __dirname, // 出力ディレクトリを __dirname に設定
         filename: "[name].js",
     },
-    mode: "development",
-    // mode: "production",
+    // mode: "development",
+    mode: "production",
     resolve: {
         extensions: [".ts", ".js"], //from "./index" を "./index.ts" として解決する
     },
     devServer: {
         static: {
-            directory: path.resolve(__dirname, 'dist'),
+            directory: __dirname, // サーブするディレクトリを __dirname に設定
         },
         open: true,
     },
