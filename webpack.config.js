@@ -1,21 +1,24 @@
+const path = require('path');
+
 module.exports = {
     entry: {
         bundle: "./src/index.ts"
     },
     output: {
-        path: __dirname, // 出力ディレクトリを __dirname に設定
+        path: path.resolve(__dirname, 'docs'), // 出力ディレクトリを 'docs' に設定
         filename: "[name].js",
+        publicPath: "" // 相対パスでのアクセス
     },
-    // mode: "development",
     mode: "production",
     resolve: {
         extensions: [".ts", ".js"], //from "./index" を "./index.ts" として解決する
     },
     devServer: {
         static: {
-            directory: __dirname, // サーブするディレクトリを __dirname に設定
+            directory: path.resolve(__dirname, 'docs'), // サーブするディレクトリを 'docs' に設定
         },
         open: true,
+        historyApiFallback: true, // SPAのための設定
     },
     module: {
         rules: [
